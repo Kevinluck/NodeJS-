@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="/public/js/jquery-1.12.4.min.js"></script>
+    <script src="/public/js/index.js"></script>
+</head>
+
+<body>
+    {% if userInfo._id %}
+    <div id="userInfo">
+        <h1>用户信息</h1>
+        <p class="username">{{userInfo.username}}</p>
+        <p>你好，你是管理员 <a href="">你可以点击这里进入管理</a></p>
+        <p><a href="javascript:;" id="logout">退出</a></p>
+    </div>
+    {% else %}
+    <div class="register-wrap">
+        <div id="registerBox">
+            <h1>注册</h1>
+            <label for="username">
+                用户名：
+                <input type="text" id="username" name="username" value="" />
+            </label><br>
+            <label for="password">
+                密码：
+                <input type="text" id="password" name="password" value="" />
+            </label><br>
+            <label for="repassword">
+                确认密码：
+                <input type="text" id="repassword" name="repassword" value="" />
+            </label><br>
+            <button>注册</button><br>
+            <a href="javascript:;">马上登录</a>
+        </div>
+        <div id="loginBox" style="display: none">
+            <h1>登录</h1>
+            <label for="loginUserName">
+                用户名：
+                <input type="text" id="loginUserName" name="loginUserName" value="" />
+            </label><br>
+            <label for="loginPassWord">
+                密码：
+                <input type="text" id="loginPassWord" name="loginPassWord" value="" />
+            </label><br>
+            <button>登录</button><br>
+            <a href="javascript:;">马上注册</a>
+        </div>
+    </div>
+    {%endif%}
+</body>
+</html>
