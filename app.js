@@ -36,15 +36,18 @@ app.use(function(req, res, next) {
         try {
             req.userInfo = JSON.parse(req.cookies.get('userInfo'));
             // 获取当前登录用户是否是管理员
-            /*User.findById(req.userInfo._id).then(function(userInfo) {
-                req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
+            User.findById(req.userInfo._id).then(function(userInfo) {
+                if (userInfo.isAdmin) {
+                    req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
+                }
                 next();
-            })*/
+            })
         } catch(e) {
             next();
         }
+    } else {
+        next();
     }
-    next();
 });
 
 app.use('/admin', require('./routers/admin'));
@@ -56,7 +59,6 @@ mongoose.connect('mongodb://localhost:27018/Blog', function(err) {
         console.log('数据库链接失败');
     } else {
         console.log('数据库链接成功');
-        // 监听http请求
         app.listen(8081);
     }
 });

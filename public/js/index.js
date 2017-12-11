@@ -53,11 +53,6 @@ $(function() {
                 console.log(res);
                 if (!res.code) {
                     window.location.reload();
-                    /*setTimeout(function() {
-                        $loginBox.hide();
-                        $userInfo.show();
-                        $userInfo.find('.username').html(res.userInfo.username);
-                    }, 1000);*/
                 }
             }
         })
